@@ -6,6 +6,7 @@ import { SVG } from 'mathjax-full/js/output/svg';
 import { browserAdaptor } from 'mathjax-full/js/adaptors/browserAdaptor';
 import { RegisterHTMLHandler } from 'mathjax-full/js/handlers/html';
 import { STATE } from 'mathjax-full/js/core/MathItem';
+import {AmsConfiguration} from 'mathjax-full/js/input/tex/ams/AmsConfiguration'; 
 
 // TODO import from mathjax-full
 export type SourceSpecification = {
@@ -18,7 +19,7 @@ const adaptor = browserAdaptor();
 RegisterHTMLHandler(adaptor);
 
 //  Create input and output jax and a document using them on the content from the HTML file (see: https://github.com/mathjax/MathJax-demos-node/blob/master/direct/tex2svg)
-const tex = new TeX({packages: ['base', 'ams']});
+const tex = new TeX({ packages: ['base', AmsConfiguration.name]});
 const mathml = new MathML({});
 const svg = new SVG({fontCache: 'none'});
 const markErrors = [STATE.TYPESET + 1, null, onError];
